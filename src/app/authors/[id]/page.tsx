@@ -1,11 +1,12 @@
 import BookofAuthor from "@/components/BookofAuthor";
 
 interface IProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
-function AuthorDetails({ params }: IProps) {
+async function AuthorDetails(props: IProps) {
+  const params = await props.params;
   const { id } = params;
 
   return (

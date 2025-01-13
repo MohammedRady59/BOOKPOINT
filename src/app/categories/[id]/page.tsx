@@ -1,12 +1,13 @@
 import CategoreDetails from "@/components/CategoreDetails";
 
 interface IProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
-function CategoryDetails({ params }: IProps) {
+async function CategoryDetails(props: IProps) {
+  const params = await props.params;
   const { id } = params;
 
   return (

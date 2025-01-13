@@ -1,11 +1,12 @@
 import BookDetails from "@/components/BookDetails";
 
 interface IProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
-function Book({ params }: IProps) {
+async function Book(props: IProps) {
+  const params = await props.params;
   const { id } = params;
   return (
     <div className="mt-7 ">
