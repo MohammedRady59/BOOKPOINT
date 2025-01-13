@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-const localData = localStorage.getItem("token");
+const localData =
+  typeof window !== "undefined" ? localStorage.getItem("token") : null;
 export const favoriteapi = createApi({
   reducerPath: "favorite",
   tagTypes: ["Favorite"],

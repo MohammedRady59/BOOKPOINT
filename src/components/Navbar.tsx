@@ -22,13 +22,12 @@ const pages = [
   { name: "Authors", path: "/authors" },
 ];
 
-const localData = localStorage.getItem("token");
-const userData = localData ? localData : null;
-
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -38,14 +37,22 @@ function Navbar() {
     setAnchorElNav(null);
   };
 
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    location.replace("/signin");
+  };
+
+  const localData = localStorage.getItem("token");
+  const userData = localData ? localData : null;
+
   return (
     <AppBar position="static" sx={{ bgcolor: "white" }}>
       <Container maxWidth="xl">
@@ -116,7 +123,6 @@ function Navbar() {
                   }}
                 >
                   <Link href={"/favorite"}>
-                    {" "}
                     <FavoriteBorderIcon
                       sx={{ fontSize: "2rem", color: "#115e59" }}
                     />
@@ -176,12 +182,7 @@ function Navbar() {
             NETH-BOOKPOINT
           </Typography>
 
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", md: "flex" },
-            }}
-          >
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
                 className="text-background text-sm font-semibold group"
@@ -242,7 +243,6 @@ function Navbar() {
             {userData ? (
               <>
                 <Link href={"/favorite"}>
-                  {" "}
                   <FavoriteBorderIcon
                     sx={{ fontSize: "2rem", color: "#115e59" }}
                   />
@@ -273,7 +273,8 @@ function Navbar() {
                     }}
                   >
                     <MenuItem onClick={handleClose}>My Profile</MenuItem>
-                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    <MenuItem onClick={handleLogout}>Logout</MenuItem>{" "}
+                    {/* استخدام دالة الخروج */}
                   </Menu>
                 </div>
               </>
