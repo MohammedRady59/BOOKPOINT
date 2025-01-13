@@ -46,11 +46,15 @@ function Navbar() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    location.replace("/signin");
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("token");
+      location.replace("/signin");
+    }
   };
 
-  const localData = localStorage.getItem("token");
+  // الوصول إلى localStorage فقط في بيئة العميل
+  const localData =
+    typeof window !== "undefined" ? localStorage.getItem("token") : null;
   const userData = localData ? localData : null;
 
   return (
@@ -273,8 +277,7 @@ function Navbar() {
                     }}
                   >
                     <MenuItem onClick={handleClose}>My Profile</MenuItem>
-                    <MenuItem onClick={handleLogout}>Logout</MenuItem>{" "}
-                    {/* استخدام دالة الخروج */}
+                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
                   </Menu>
                 </div>
               </>
