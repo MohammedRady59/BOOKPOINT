@@ -15,7 +15,7 @@ function Page() {
         direction="column"
         spacing={2}
         sx={{
-          width: "48%",
+          width: { xs: "100%", sm: "80%" },
           textAlign: "center",
         }}
       >

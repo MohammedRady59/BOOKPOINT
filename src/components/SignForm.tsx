@@ -120,7 +120,7 @@ function SignForm() {
           fontSize: "14px",
           textAlign: "center",
           marginTop: 2,
-          color: "text.secondary", // Make sure it aligns with your theme's secondary text color
+          color: "text.secondary",
         }}
       >
         Unlock a world of knowledge by registering with us today!

@@ -56,7 +56,7 @@ function Reviews({ idReview }: IProps) {
         bgcolor: "white",
         borderRadius: "10px",
         padding: "10px",
-        width: "40rem",
+        width: { xs: "20rem", sm: "40rem" },
         marginInline: "auto",
       }}
     >

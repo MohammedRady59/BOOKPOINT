@@ -52,7 +52,6 @@ function Navbar() {
     }
   };
 
-  // الوصول إلى localStorage فقط في بيئة العميل
   const localData =
     typeof window !== "undefined" ? localStorage.getItem("token") : null;
   const userData = localData ? localData : null;

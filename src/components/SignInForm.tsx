@@ -15,6 +15,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { yupResolver } from "@hookform/resolvers/yup";
 import InputError from "./InputError";
+
 import { signinSchema } from "@/validation/schema";
 import Loader from "./Loader";
 
@@ -72,7 +73,11 @@ function SignInForm() {
         justifyContent="center"
         direction="column"
         spacing={3}
-        sx={{ width: "100%", maxWidth: "400px", mx: "auto" }}
+        sx={{
+          width: "100%",
+          maxWidth: { xs: "100%", sm: "400px" },
+          mx: "auto",
+        }}
       >
         {SignInInputs}
 

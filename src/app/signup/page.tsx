@@ -13,7 +13,7 @@ function Signup() {
     >
       <Box
         sx={{
-          width: "40%",
+          width: { xs: "100%", sm: "80%", lg: "48%" },
           padding: "10px",
         }}
       >
